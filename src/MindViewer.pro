@@ -23,11 +23,13 @@ UI_DIR = .ui
 MOC_DIR = .moc
 
 SOURCES += \
+    eegframe.cpp \
     main.cpp \
     mainwindow.cpp \
     simulator.cpp
 
 HEADERS += \
+    eegframe.h \
     mainwindow.h \
     simulator.h
 
