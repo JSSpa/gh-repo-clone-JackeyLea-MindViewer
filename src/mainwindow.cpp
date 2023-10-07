@@ -17,7 +17,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::sltReceivePackage(QByteArray ba)
+void MainWindow::sltReceivePackage(const QByteArray& ba)
 {
     qDebug()<<QTime::currentTime()<<ba;
 }

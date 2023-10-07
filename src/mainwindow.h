@@ -24,7 +24,7 @@ public:
     ~MainWindow();
 
 protected slots:
-    void sltReceivePackage(QByteArray ba);
+    void sltReceivePackage(const QByteArray &ba);
 
 private slots:
     void on_actionOpen_triggered();
