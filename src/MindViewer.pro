@@ -24,10 +24,12 @@ MOC_DIR = .moc
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    simulator.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    simulator.h
 
 FORMS += \
     mainwindow.ui

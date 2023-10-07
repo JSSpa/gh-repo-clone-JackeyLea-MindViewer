@@ -5,6 +5,11 @@
 #include <QMessageBox>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QThread>
+#include <QDateTime>
+#include <QDebug>
+
+#include "simulator.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,6 +22,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+protected slots:
+    void sltReceivePackage(QByteArray ba);
 
 private slots:
     void on_actionOpen_triggered();
@@ -35,5 +43,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    Simulator *m_sim;
 };
 #endif // MAINWINDOW_H

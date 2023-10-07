@@ -4,13 +4,22 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , m_sim(nullptr)
 {
     ui->setupUi(this);
 }
 
 MainWindow::~MainWindow()
 {
+    if(m_sim){
+        m_sim->deleteLater();
+    }
     delete ui;
+}
+
+void MainWindow::sltReceivePackage(QByteArray ba)
+{
+    qDebug()<<QTime::currentTime()<<ba;
 }
 
 
@@ -49,7 +58,8 @@ void MainWindow::on_actionGithub_triggered()
 
 void MainWindow::on_actionSimulator_triggered()
 {
-
+    m_sim = new Simulator();
+    connect(m_sim,&Simulator::sendPackage,this,&MainWindow::sltReceivePackage);
 }
 
 
