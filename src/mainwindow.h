@@ -23,6 +23,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void parseData(QByteArray ba);
+
 protected slots:
     void sltReceivePackage(const QByteArray &ba);
 

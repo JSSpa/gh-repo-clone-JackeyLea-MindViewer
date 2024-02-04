@@ -15,6 +15,21 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <item row="0" column="0">
      <widget class="QFrame" name="frameEEG">
       <property name="frameShape">
@@ -80,7 +95,7 @@
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QFrame" name="frameDelta">
+        <widget class="EEGFrame" name="frameDelta">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -241,6 +256,14 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>EEGFrame</class>
+   <extends>QFrame</extends>
+   <header>eegframe.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>

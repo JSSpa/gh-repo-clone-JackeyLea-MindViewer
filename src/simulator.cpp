@@ -4,7 +4,7 @@ Simulator::Simulator(QObject *parent)
     : QObject{parent}
 {
     m_timer = new QTimer(this);
-    m_timer->setInterval(1000);//ä¸€ç§’é’Ÿå‘ä¸€æ¬¡åŒ…
+    m_timer->setInterval(1000);//Ò»ÃëÖÓ·¢Ò»´Î°ü
     connect(m_timer,&QTimer::timeout,[=](){
         QByteArray buff;
         buff.clear();
@@ -23,20 +23,20 @@ Simulator::~Simulator()
     }
     m_timer->deleteLater();
 }
-//ä¸€ä¸ªå¤§åŒ…åŒ…å«512ä¸ªåŸå§‹æ•°å€¼åŒ…å’ŒEEGåŒ…
+//Ò»¸ö´ó°ü°üº¬512¸öÔ­Ê¼ÊıÖµ°üºÍEEG°ü
 QByteArray Simulator::getFixPackage()
 {
     QByteArray buff;
     buff.clear();
 
-    //åŸå§‹å€¼
+    //Ô­Ê¼Öµ
     for(int i=0;i<512;i++){
         buff.append(0xAA);
         buff.append(0xAA);
-        buff.append(0x04);//åŒ…å¤§å°
-        buff.append(0x80);//åŸå§‹æ•°æ®æ ‡å¿—
-        buff.append(0x02);//æ•°æ®å¤§å°
-        if(i%2==0){//ä¸¤ç§ï¼Œè¦ä¸ç„¶å°±æ˜¯ä¸€æ¡ç›´çº¿äº†
+        buff.append(0x04);//°ü´óĞ¡
+        buff.append(0x80);//Ô­Ê¼Êı¾İ±êÖ¾
+        buff.append(0x02);//Êı¾İ´óĞ¡
+        if(i%2==0){//Á½ÖÖ£¬Òª²»È»¾ÍÊÇÒ»ÌõÖ±ÏßÁË
             buff.append(0xFC);
             buff.append(0xEE);
             buff.append(0x93);
@@ -50,11 +50,11 @@ QByteArray Simulator::getFixPackage()
     //EEG
     buff.append(0xAA);
     buff.append(0xAA);
-    buff.append(0x20);//åŒ…å¤§å°
-    buff.append(0x02);//ä¿¡å·å€¼
+    buff.append(0x20);//°ü´óĞ¡
+    buff.append(0x02);//ĞÅºÅÖµ
     buff.append(0xc8);
     buff.append(0x83);//EEG
-    buff.append(0x18);//EEGå¤§å°ä¸º24ä¸ª
+    buff.append(0x18);//EEG´óĞ¡Îª24¸ö
     buff.append(0x18);// delta 1/3
     buff.append(0xd4);// delta 2/3
     buff.append(0x8b);// delta 3/3
@@ -69,7 +69,7 @@ QByteArray Simulator::getFixPackage()
     buff.append(0xdc);// HighAlpha 3/3
     buff.append(0x02);// LowBeta 1/3
     buff.append(0x50);// LowBeta 2/3
-    buff.append((uchar)0x00);// LowBeta 3/3
+    buff.append((char)0x00);// LowBeta 3/3
     buff.append(0x03);// HighBeta 1/3
     buff.append(0xcb);// HighBeta 2/3
     buff.append(0x9d);// HighBeta 3/3
@@ -79,10 +79,10 @@ QByteArray Simulator::getFixPackage()
     buff.append(0x03);// MiddleGamma 1/3
     buff.append(0x7e);// MiddleGamma 2/3
     buff.append(0x89);// MiddleGamma 3/3
-    buff.append(0x04);// ä¸“æ³¨åº¦
-    buff.append((uchar)0x00);
-    buff.append(0x05);// æ”¾æ¾åº¦
-    buff.append((uchar)0x00);
+    buff.append(0x04);// ×¨×¢¶È
+    buff.append((char)0x00);
+    buff.append(0x05);// ·ÅËÉ¶È
+    buff.append((char)0x00);
     buff.append(0xd5);
 
     return buff;
